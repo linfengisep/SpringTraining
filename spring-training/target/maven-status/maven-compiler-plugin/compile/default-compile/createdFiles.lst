@@ -1,0 +1,7 @@
+com/coding/fun/spring_training/App.class
+com/coding/fun/ioc/InjectionDaoImpl.class
+com/coding/fun/ioc/InjectionService.class
+com/coding/fun/ioc/OneInterfaceImpl.class
+com/coding/fun/ioc/OneInterface.class
+com/coding/fun/ioc/InjectionDao.class
+com/coding/fun/ioc/InjectionServiceImpl.class

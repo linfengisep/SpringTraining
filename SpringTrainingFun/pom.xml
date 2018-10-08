@@ -1,0 +1,191 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.coding.spring</groupId>
+  <artifactId>SpringTrainingFun</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging><!-- change from jar to pom, cus it will be parent module and manage children module -->
+  
+<!-- =============================================================== -->
+<!-- General informations -->
+<!-- =============================================================== -->
+  <name>${projectName}</name>
+  <url>${link}</url>
+  <description>
+         take advantage of this project to learn Maven,Spring.
+  </description>
+
+   <organization>
+        <name>${projectName}</name>
+        <url>${link}</url>
+    </organization>
+  
+<!-- =============================================================== -->
+<!-- Properties Managements-->
+<!-- =============================================================== -->
+  <properties>
+    <projectName>Isep</projectName>
+    <link>https://isep.fr</link>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  
+<!-- =============================================================== -->
+<!-- Modules Managements -->
+<!-- =============================================================== -->
+    <modules>
+	    <module>bookshop-batch</module>
+	    <module>bookshop-user</module>
+	    <module>bookshop-model</module>
+	    <module>bookshop-website</module>
+	    <module>bookshop-logic</module>
+    </modules>
+      
+<!-- =============================================================== -->
+<!-- Dependence Managements, if the parent don't need dependence, we can delete this one -->
+<!-- =============================================================== -->
+<dependencyManagement>
+<dependencies>
+	<dependency>
+      <groupId>com.coding.spring.SpringTrainingFun</groupId>
+      <artifactId>bookshop-batch</artifactId>
+  	  <version>1.0-SNAPSHOT</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.coding.spring.SpringTrainingFun</groupId>
+      <artifactId>bookshop-user</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.coding.spring.SpringTrainingFun</groupId>
+      <artifactId>bookshop-website</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.coding.spring.SpringTrainingFun</groupId>
+      <artifactId>bookshop-logic</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.coding.spring.SpringTrainingFun</groupId>
+      <artifactId>bookshop-model</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency> 
+    
+      <!-- third party library -->
+    
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+	  <groupId>org.apache.commons</groupId>
+	  <artifactId>commons-collections4</artifactId>
+	  <version>4.1</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>javax.servlet</groupId>
+	  <artifactId>servlet-api</artifactId>
+	  <version>2.5</version>
+	  <scope>provided</scope>
+	</dependency>
+	
+	<dependency>
+	  <groupId>javax.validation</groupId>
+	  <artifactId>validation-api</artifactId>
+	  <version>1.1.0.Final</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.apache.bval</groupId>
+	  <artifactId>bval-jsr</artifactId>
+	  <version>1.1.2</version>
+	  <scope>runtime</scope>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.apache.commons</groupId>
+	  <artifactId>commons-text</artifactId>
+	  <version>1.1</version>
+	  <!-- here, we need commons-langs, but maven add this automaticly, but if we don't want this, we can exclude it -->
+	  <!--   -->
+	   <exclusions>
+	   	<exclusion>
+	   	   <groupId>org.apache.commons</groupId>
+	   	   <artifactId>commons-lang3</artifactId>
+	   	</exclusion>
+	   </exclusions>
+	</dependency>
+  </dependencies>
+</dependencyManagement>
+ 
+  
+<!-- =============================================================== -->
+<!-- Profiles Managements -->
+<!-- =============================================================== -->
+ <profiles>
+ 	<profile>
+ 		<id>test</id>
+ 		<build>
+ 			<resources>
+ 				<resource>
+ 					<directory>src/main/resources/conf-test</directory>
+ 					<filtering>true</filtering>
+ 				</resource>
+ 			</resources>
+ 		</build>
+ 	</profile>
+ 	<profile>
+ 		<id>prod</id>
+ 		<build>
+ 			<resources>
+ 				<resource>
+ 					<directory>src/main/resources/conf-prod</directory>
+ 					<filtering>true</filtering>
+ 				</resource>
+ 			</resources>
+ 		</build>
+ 	</profile>
+ </profiles>
+  
+  
+  
+    
+<!-- =============================================================== -->
+<!-- Build Managements -->
+<!-- =============================================================== -->
+<build>
+	<directory>${project.basedir}/target</directory>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+	<plugins>
+		<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+			<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.coding.spring.SpringTrainingFun.App</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+		</plugin>
+	</plugins>
+</build>
+</project>

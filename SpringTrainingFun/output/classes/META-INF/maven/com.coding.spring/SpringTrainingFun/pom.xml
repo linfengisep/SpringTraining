@@ -1,0 +1,111 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.coding.spring</groupId>
+  <artifactId>SpringTrainingFun</artifactId>
+  <version>1.1.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  
+<!-- =============================================================== -->
+<!-- General informations -->
+<!-- =============================================================== -->
+  <name>${projectName}</name>
+  <url>${link}</url>
+  <description>
+         take advantage of this project to learn Maven,Spring.
+  </description>
+
+   <organization>
+        <name>${projectName}</name>
+        <url>${link}</url>
+    </organization>
+  
+<!-- =============================================================== -->
+<!-- Properties Managements-->
+<!-- =============================================================== -->
+  <properties>
+    <projectName>Isep</projectName>
+    <link>https://isep.fr</link>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  
+<!-- =============================================================== -->
+<!-- Modules -->
+<!-- =============================================================== -->
+    <modules>
+    </modules>
+      
+<!-- =============================================================== -->
+<!-- Dependence Managements -->
+<!-- =============================================================== -->
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+<!-- =============================================================== -->
+<!-- Profiles Managements -->
+<!-- =============================================================== -->
+ <profiles>
+ 	<profile>
+ 		<id>test</id>
+ 		<build>
+ 			<resources>
+ 				<resource>
+ 					<directory>src/main/resources/conf-test</directory>
+ 					<filtering>true</filtering>
+ 				</resource>
+ 			</resources>
+ 		</build>
+ 	</profile>
+ 	<profile>
+ 		<id>prod</id>
+ 		<build>
+ 			<resources>
+ 				<resource>
+ 					<directory>src/main/resources/conf-prod</directory>
+ 					<filtering>true</filtering>
+ 				</resource>
+ 			</resources>
+ 		</build>
+ 	</profile>
+ </profiles>
+  
+  
+  
+    
+<!-- =============================================================== -->
+<!-- Build Managements -->
+<!-- =============================================================== -->
+<build>
+	<directory>${project.basedir}/output</directory>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+	<plugins>
+		<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+			<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.coding.spring.SpringTrainingFun.App</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+		</plugin>
+	</plugins>
+</build>
+</project>

@@ -11,7 +11,6 @@ public class TestInjection extends UnitTestBase{
 	@Test
 	public void testSetter() {
 		InjectionService service = super.getBean("injectionService");
-		
 	}
 
 }

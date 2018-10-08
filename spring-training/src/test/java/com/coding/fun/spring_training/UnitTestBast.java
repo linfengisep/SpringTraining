@@ -6,4 +6,5 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class UnitTestBast {
 	private ClassPathXmlApplicationContext context;
+	
 }

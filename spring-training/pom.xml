@@ -1,15 +1,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
-  <groupId>com.coding.fun</groupId>
-  <artifactId>spring-training</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
-
-  <name>spring-training</name>
-  <url>http://maven.apache.org</url>
-
+  <!-- information maven/coordonné du maven -->
+	  <groupId>com.coding.fun</groupId>
+	  <artifactId>spring-training</artifactId>
+	  <version>0.0.1-SNAPSHOT</version>   <!-- '-SNAPSHOT' means this project is still developping, when finish, remove -SHAPSHOT -->
+	  <packaging>jar</packaging>
+ 
+ <!-- general information -->
+	  <name>spring-training</name>
+	  <description>app pour apprendre Maven et Spring sur openclassroom</description>
+	  <url>https://openclassrooms.com/en/courses/4503526-organisez-et-packagez-une-application-java-avec-apache-maven/4609040-decrivez-votre-projet</url>
+  <!-- Organization -->
+	  <organization>
+	  	<name>linfeng from ISEP</name>
+	  	<url>https://github.com/linfengisep</url>
+	  </organization>
+  
+  <!-- Licenses -->
+	  <licenses>
+	  	<license>
+	  		<name>my app 1.0</name>
+	  	</license>
+	  </licenses>
+  <!-- properties are constant, their value can be replace during execution by maven -->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
