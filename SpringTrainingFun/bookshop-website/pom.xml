@@ -79,6 +79,33 @@
  	</profile>
  	<profile>
  		<id>target-prod</id>
+ 		<build>
+ 			<plugins>
+ 				<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-enforcer-plugin</artifactId>
+ 				<version>1.4.1</version>
+ 				<executions>
+ 					<execution>
+ 						<id>enforce-no-snapshot-prod</id>
+ 						<phase>validate</phase>
+ 						<goals>
+ 							<goal>enforce</goal>
+ 						</goals>
+ 						<configuration>
+ 							<rules>
+ 								<requireActiveProfile>
+ 									<requireReleaseVersion/>
+ 									<!-- no dependence will be in snapshot -->
+ 									<requireReleaseDeps/>
+ 								</requireActiveProfile>
+ 							</rules>
+ 						</configuration>
+ 					</execution>
+ 				</executions>
+ 			</plugin>
+ 			</plugins>
+ 		</build>
  	</profile>
  	<profile>
  		<id>target-dev</id>

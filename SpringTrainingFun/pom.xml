@@ -117,7 +117,6 @@
 	  <artifactId>commons-text</artifactId>
 	  <version>1.1</version>
 	  <!-- here, we need commons-langs, but maven add this automaticly, but if we don't want this, we can exclude it -->
-	  <!--   -->
 	   <exclusions>
 	   	<exclusion>
 	   	   <groupId>org.apache.commons</groupId>
@@ -128,7 +127,6 @@
   </dependencies>
 </dependencyManagement>
  
-  
 <!-- =============================================================== -->
 <!-- Profiles Managements -->
 <!-- =============================================================== -->
@@ -156,9 +154,6 @@
  		</build>
  	</profile>
  </profiles>
-  
-  
-  
     
 <!-- =============================================================== -->
 <!-- Build Managements -->
@@ -192,12 +187,6 @@
 	  				<showWarning>true</showWarning>
 	  			</configuration>
 	  		</plugin>
-	  		
-	  		<plugin>
- 				<groupId>org.apache.maven.plugins</groupId>
- 				<artifactId>maven-enforcer-plugin</artifactId>
- 				<version>1.4.1</version>
- 			</plugin>
  			
  			<!-- War plugin -->
  			<plugin>
