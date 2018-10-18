@@ -8,6 +8,7 @@ public class Product {
 	private String name;
 	private int price;
 	private int buyingPrice;
+	public Product() {}
 	public Product(int id, String name, int price, int buyingPrice) {
 		super();
 		this.id = id;
