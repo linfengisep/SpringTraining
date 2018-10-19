@@ -1,5 +1,6 @@
 package com.spring_boot.demo.controller;
 import com.spring_boot.demo.dao.ProductDao;
+import com.spring_boot.demo.exceptions.ProductNotFoundException;
 import com.spring_boot.demo.model.Product;
 
 import java.util.List;
@@ -26,8 +27,10 @@ public class ProductController {
 	private ProductDao productDao;
 	
 	@GetMapping(value = "/Products/{id}")
-	public Product showProductById(@PathVariable int id) {
-		return productDao.findById(id);
+	public Product showProductById(@PathVariable int id) throws ProductNotFoundException {
+		Product product = productDao.findById(id);
+		if(product == null) throw new ProductNotFoundException("Product with id:"+id+" not found.");
+		return product;
 	}
 	
 	@GetMapping(value="test/Products/{price}")
@@ -37,7 +40,7 @@ public class ProductController {
 	
 	@PostMapping(value="/Products")
 	public ResponseEntity<Void> saveProduct(@RequestBody Product product) {
-		Product product1 = productDao.post(product);
+		Product product1 = productDao.save(product);
 		if(product == null) {
 			return ResponseEntity.noContent().build();
 		}
@@ -59,10 +62,11 @@ public class ProductController {
 	public void deleteProductById(@PathVariable int id) {
 		productDao.deleteById(id);
 	}
-	
+	/*
 	@PutMapping(value="/Products")
-	public void updateProduct(@RequestBody Product product) {
+	public void putProduct(@RequestBody Product product) {
 		productDao.save(product);
 	}
+	*/
 
 }

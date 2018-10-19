@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.Length;
+
 //import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 //@JsonIgnoreProperties(value= {"id","buyingPrice"})
 @Entity
@@ -11,6 +13,7 @@ public class Product {
 	@Id
 	@GeneratedValue
 	private int id;
+	@Length(min=3,max=20,message ="length is not good")
 	private String name;
 	private int price;
 	private int buyingPrice;
