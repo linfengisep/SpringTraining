@@ -3,6 +3,9 @@ import com.spring_boot.demo.dao.ProductDao;
 import com.spring_boot.demo.exceptions.ProductNotFoundException;
 import com.spring_boot.demo.model.Product;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +24,13 @@ import org.springframework.http.ResponseEntity;
 
 
 @RestController
+@Api(description="Product management")
 public class ProductController {
 	
 	@Autowired
 	private ProductDao productDao;
 	
+	@ApiOperation(value="Retrieve the product using his ID")
 	@GetMapping(value = "/Products/{id}")
 	public Product showProductById(@PathVariable int id) throws ProductNotFoundException {
 		Product product = productDao.findById(id);
